@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1041.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1039.0" prefWidth="598.0">
+         <children>
+            <VBox prefHeight="1041.0" prefWidth="600.0" spacing="1.0">
+               <children>
+                  <Label text="About VoiceLauncher">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font></Label>
+                  <Label text="VoiceLauncher is a program that is used to store shortcuts of any of your .exe programs for quick access. This program also offers the ability to launch a program via a voice command." textAlignment="JUSTIFY" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="How to add a program?">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Go to File &gt; New and a window will pop up. You can specify what you want your program to be known as in the name field, however this is not required and the file name will be used by default. A path to the .exe file is required in the path field. You can manually enter the path or click the &quot;Browse&quot; button to find and select the file in the file explorer. Click &quot;OK&quot; and the program will be added as a tile in the list. " textAlignment="JUSTIFY" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="How to launch a program?">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Simply click on the corresponding tile and your program will open. To see how to launch a program via a voice command, scroll down to &quot;How to launch a program through a voice command?&quot;" textAlignment="JUSTIFY" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="How to remove a program from the list?">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Hover the mouse over the corresponding tile. A button marked with an &quot;x&quot; will pop up in the top right corner of the tile. Click this button and the program will removed from the list." textAlignment="JUSTIFY" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="How to remove all programs?">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Go to Edit &gt; Delete All and select yes to confirm." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="How to launch a program through a voice command?" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Go to File &gt; Voice Settings and a new window will pop up. Click the microphone to enable or disable voice commands. When voice command is on, say &quot;open [program name]&quot; to launch a program via voice. The voice settings window can be closed and the voice command will continue to work." textAlignment="JUSTIFY" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label text="* Important Note: The voice command uses the name entered when adding a program to identify and match with your voice. It is required that a name is entered for the voice command to work since the default file name will contain the filename extension which will not be recognized. It is also important to understand that the recognizer only regognizes words in the dictionary, thus the name entered must contain words found in the dictionary." textAlignment="JUSTIFY" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="** It is also important to understand that the way the voice command works, it may not immediately exit when it is toggled off through the microphone button. The SpeechThread is always waiting for an input and can't be interrupted. If the voice command does not exit soon after toggling it off, it needs a sound or word spoken to return a value and exit.  Saying &quot;stop&quot; will do the trick." textAlignment="JUSTIFY" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="How to create categories?">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Categories are still under develpment and are unavailable." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="How to rearrange tiles?">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="The ability to rearrange tiles is still under develpment and is not available." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="How to change tile size?">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Go to View &gt; Tile Size and use the slider to adjust to your prefered size." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="How to hide program names?">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Go to View &gt; Show Names to trigger the names visible or not." wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></VBox>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
