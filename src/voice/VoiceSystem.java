@@ -1,6 +1,5 @@
 package voice;
 
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.time.LocalDateTime;
@@ -197,6 +196,7 @@ public class VoiceSystem {
 
         // Save to grammar file
         try {
+            //File f = new File(getClass().getResource("/MyResource").toExternalForm());
             ruleGrammar.saveJSGF(ConfigurationManagerUtils.resourceToURL("resource:/grammars/grammar.gram"));
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();

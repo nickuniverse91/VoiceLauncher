@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -10,8 +11,10 @@ import javafx.stage.Stage;
 import model.ProgramData;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class NewWindowController {
+public class NewWindowController implements Initializable {
 
     private MainController mainController;
 
@@ -23,6 +26,13 @@ public class NewWindowController {
 
     @FXML
     private TextField enterPath;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        enterName.textProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("textfield changed from " + oldValue + " to " + newValue); // Change this to check in Dictionary (and also for rearranging tiles)
+        });
+    }
 
     @FXML
     private void browseButtonHandler(ActionEvent actionEvent) {

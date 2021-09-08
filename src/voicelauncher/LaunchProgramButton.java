@@ -5,9 +5,11 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
@@ -19,7 +21,7 @@ import javafx.util.Duration;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
-import java.awt.*;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -66,15 +68,16 @@ public class LaunchProgramButton extends Region {
         programButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                Runtime run = Runtime.getRuntime();
-                try {
-                    run.exec(path);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+                    Runtime run = Runtime.getRuntime();
+                    try {
+                        run.exec(path);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
-
 
         this.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
@@ -103,6 +106,25 @@ public class LaunchProgramButton extends Region {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 getScene().setCursor(Cursor.DEFAULT);
+            }
+        });
+
+        ////////////////////////////////////////// Context Menu \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+        ContextMenu contextMenu = new ContextMenu();
+        Menu item1 = new Menu("Set category");
+        MenuItem item2 = new MenuItem("New category");
+        contextMenu.getItems().addAll(item1, item2);
+        RadioMenuItem radioMenuItem1 = new RadioMenuItem("Apps");   // Toggle or normal MenuItem?
+        RadioMenuItem radioMenuItem2 = new RadioMenuItem("Apps2");
+        ToggleGroup toggleGroup = new ToggleGroup();
+        radioMenuItem1.setToggleGroup(toggleGroup);
+        radioMenuItem2.setToggleGroup(toggleGroup);
+        item1.getItems().addAll(radioMenuItem1, radioMenuItem2);
+
+        programButton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+            @Override
+            public void handle(ContextMenuEvent contextMenuEvent) {
+                contextMenu.show(programButton, contextMenuEvent.getScreenX(), contextMenuEvent.getScreenY());
             }
         });
 

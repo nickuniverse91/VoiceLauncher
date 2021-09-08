@@ -5,7 +5,6 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,10 +12,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import model.Category;
+import voicelauncher.CategoryUI;
 import voicelauncher.CustomEventHandler;
 import voicelauncher.LaunchProgramButton;
 import model.ProgramData;
@@ -24,15 +25,16 @@ import model.ProgramData;
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class MainController implements Initializable {
 
     private ArrayList<ProgramData> programs = new ArrayList<>();
+
+    //private ArrayList<Category> categories = new ArrayList<>();
+
+    private TreeSet<Category> categories = new TreeSet<>();
 
     private double tileSizeRatio;
 
@@ -46,7 +48,7 @@ public class MainController implements Initializable {
     private CheckMenuItem showNameButton;
 
     @FXML
-    private TilePane tilePane;
+    private VBox categoriesPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -118,21 +120,27 @@ public class MainController implements Initializable {
         return names;
     }
 
-    private void createTiles() {
-        //voiceSystem.closeSystem();
+    private void createCategoryList() {
+        for (ProgramData d: programs) {
+            // Wait, I should sort them first
+        }
+    }
 
-        tilePane.getChildren().clear();
+    private void createTiles() {
+
+        categoriesPane.getChildren().clear();
+        CategoryUI cat = new CategoryUI();
+        //categories.getChildren().add(cat);
         for (ProgramData d: programs) {
             if (d.getName() == null) // Looking back I have no idea why I did this
                 continue;
             LaunchProgramButton lpb = new LaunchProgramButton(d.getName(), d.getPath(), tileSizeRatio * 150);
             lpb.setNameVisibility(showNameButton.isSelected());
             setRemoveHandler(lpb);
-            tilePane.getChildren().add(lpb);
+            cat.addTile(lpb);
         }
+        categoriesPane.getChildren().add(cat);
 
-        //voiceSystem.updateGrammar(getProgramNames());
-        //voiceSystem.startSystem();
     }
 
     public void addProgram(ProgramData data) {
@@ -145,15 +153,15 @@ public class MainController implements Initializable {
         }
     }
 
-    public void setTileSizes(double sizeRatio) {
+    public void setTileSizes(double sizeRatio) {/*
         for (Node n: tilePane.getChildren()) {
             LaunchProgramButton lpb = (LaunchProgramButton) n;
             lpb.setSize(sizeRatio * 150);
             tileSizeRatio = sizeRatio;
-        }
+        }*/
     }
 
-    private void showNames(boolean visible) {
+    private void showNames(boolean visible) {/*
         for (Node n: tilePane.getChildren()) {
             LaunchProgramButton lpb = (LaunchProgramButton) n;
             lpb.setNameVisibility(visible);
@@ -173,7 +181,7 @@ public class MainController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
     }
 
     public void launch(String name) {

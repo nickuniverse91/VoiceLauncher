@@ -7,6 +7,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+<?import voicelauncher.CategoryUI?>
+
 <BorderPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
@@ -42,36 +44,7 @@
     </top>
    <center>
         <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
-            <VBox prefHeight="452.0" prefWidth="658.0" BorderPane.alignment="CENTER">
-             <children>
-               <HBox prefHeight="36.0" prefWidth="658.0" spacing="5.0">
-                  <children>
-                     <Polygon stroke="BLACK" strokeType="INSIDE" translateY="7.0">
-                       <points>
-                         <Double fx:value="0" />
-                         <Double fx:value="0" />
-                         <Double fx:value="20" />
-                         <Double fx:value="0" />
-                         <Double fx:value="10.0" />
-                         <Double fx:value="20.0" />
-                       </points>
-                     </Polygon>
-                       <Label text="Applications">
-                           <font>
-                               <Font name="Arial Narrow Bold" size="27.0" />
-                           </font>
-                     </Label>
-                  </children>
-                  <VBox.margin>
-                     <Insets left="5.0" />
-                  </VBox.margin>
-               </HBox>
-                 <TilePane fx:id="tilePane" hgap="50.0" vgap="50.0">
-                     <padding>
-                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                 </TilePane>
-             </children>
+            <VBox prefHeight="452.0" prefWidth="658.0" BorderPane.alignment="CENTER" fx:id="categoriesPane">
             </VBox>
         </ScrollPane>
    </center>

@@ -30,7 +30,7 @@ public class DatabaseController {
 
         while (resultSet.next()) {
 
-            ProgramData dm = new ProgramData(resultSet.getString("name"), resultSet.getString("path"));
+            ProgramData dm = new ProgramData(resultSet.getString("name"), resultSet.getString("path"), resultSet.getString("category"), resultSet.getInt("position"));
 
             dataList.add(dm);
 
@@ -46,7 +46,7 @@ public class DatabaseController {
 
         Connection dbConnection = dbp.getConnection(databaseName);
 
-        String query = "INSERT INTO " + tableName + " (name, path) VALUES (?,?)";
+        String query = "INSERT INTO " + tableName + " (name, path, category, position) VALUES (?,?,?,?)";
 
 
         PreparedStatement prep = dbConnection.prepareStatement(query);
@@ -54,6 +54,8 @@ public class DatabaseController {
 
             prep.setString(1, d.getName());
             prep.setString(2, d.getPath());
+            prep.setString(3, d.getCategory());
+            prep.setInt(4, d.getPosition());
 
         }
         prep.executeUpdate();
