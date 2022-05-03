@@ -5,6 +5,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -32,9 +33,8 @@ public class MainController implements Initializable {
 
     private ArrayList<ProgramData> programs = new ArrayList<>();
 
-    //private ArrayList<Category> categories = new ArrayList<>();
-
-    private TreeSet<Category> categories = new TreeSet<>();
+    // might not need this
+    private ArrayList<Category> categories = new ArrayList<>();
 
     private double tileSizeRatio;
 
@@ -132,7 +132,7 @@ public class MainController implements Initializable {
         CategoryUI cat = new CategoryUI();
         //categories.getChildren().add(cat);
         for (ProgramData d: programs) {
-            if (d.getName() == null) // Looking back I have no idea why I did this
+            if (d.getName() == null) // Might remove this, may not be needed
                 continue;
             LaunchProgramButton lpb = new LaunchProgramButton(d.getName(), d.getPath(), tileSizeRatio * 150);
             lpb.setNameVisibility(showNameButton.isSelected());
@@ -153,19 +153,27 @@ public class MainController implements Initializable {
         }
     }
 
-    public void setTileSizes(double sizeRatio) {/*
-        for (Node n: tilePane.getChildren()) {
-            LaunchProgramButton lpb = (LaunchProgramButton) n;
-            lpb.setSize(sizeRatio * 150);
-            tileSizeRatio = sizeRatio;
-        }*/
+    public void setTileSizes(double sizeRatio) {
+        for (Node n1: categoriesPane.getChildren()) {
+            CategoryUI categoryUI = (CategoryUI) n1;
+            for (Node n2: categoryUI.getTiles()) {
+                LaunchProgramButton lpb = (LaunchProgramButton) n2;
+                lpb.setSize(sizeRatio * 150);
+                tileSizeRatio = sizeRatio;
+            }
+        }
+
     }
 
-    private void showNames(boolean visible) {/*
-        for (Node n: tilePane.getChildren()) {
-            LaunchProgramButton lpb = (LaunchProgramButton) n;
-            lpb.setNameVisibility(visible);
+    private void showNames(boolean visible) {
+        for (Node n1: categoriesPane.getChildren()) {
+            CategoryUI categoryUI = (CategoryUI) n1;
+            for (Node n2: categoryUI.getTiles()) {
+                LaunchProgramButton lpb = (LaunchProgramButton) n2;
+                lpb.setNameVisibility(visible);
+            }
         }
+
 
         try  {
             InputStream input = new FileInputStream("resources/config.properties");
@@ -181,7 +189,7 @@ public class MainController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-*/
+
     }
 
     public void launch(String name) {

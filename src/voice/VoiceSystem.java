@@ -125,9 +125,9 @@ public class VoiceSystem {
     }
 
     public void makeDecision(String speech) {
-        // remember to check for and remove 'open' from string
+        // remember to check for and remove 'open' from string. This will make it easier if other commands are added
         if (speech.startsWith("open"))
-            controller.launch(speech); // Modify to remove open
+            controller.launch(speech); // Modify to remove open later
     }
 
     public void startSystem() {
